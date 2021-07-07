@@ -1,10 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import App from './components/App';
+
+const initialState = {
+  books: [
+    {
+      id: Math.floor(Math.random() * (1 - 5) + 5),
+      title: 'Book1',
+      category: 'Action',
+    },
+    {
+      id: Math.floor(Math.random() * (1 - 5) + 5),
+      title: 'Book2',
+      category: 'Action',
+    },
+    {
+      id: Math.floor(Math.random() * (1 - 5) + 5),
+      title: 'Book3',
+      category: 'Action',
+    },
+    {
+      id: Math.floor(Math.random() * (1 - 5) + 5),
+      title: 'Book4',
+      category: 'Action',
+    },
+  ],
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={initialState}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
