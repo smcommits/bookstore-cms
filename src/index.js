@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers/index';
+
 import App from './components/App';
 
 const initialState = {
@@ -13,24 +16,26 @@ const initialState = {
     {
       id: Math.floor(Math.random() * (1 - 5) + 5),
       title: 'Book2',
-      category: 'Action',
+      category: 'History',
     },
     {
       id: Math.floor(Math.random() * (1 - 5) + 5),
       title: 'Book3',
-      category: 'Action',
+      category: 'Biography',
     },
     {
       id: Math.floor(Math.random() * (1 - 5) + 5),
       title: 'Book4',
-      category: 'Action',
+      category: 'Horror',
     },
   ],
 };
 
+const store = createStore(rootReducer, initialState);
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={initialState}>
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,

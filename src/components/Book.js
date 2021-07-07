@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
-  const { id, title, category } = props;
+  const { book } = props;
+  const { id, title, category } = book;
   return (
     <tr>
       <td>{id}</td>
@@ -13,7 +14,8 @@ const Book = (props) => {
 };
 
 Book.propTypes = {
-  id: PropTypes.string.isRequired,
+  book: PropTypes.instanceOf(Object).isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
 };

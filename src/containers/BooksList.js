@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -5,6 +7,7 @@ import Book from '../components/Book';
 
 const BooksList = (props) => {
   const { books } = props;
+  const bookTable = books.map((book) => <Book key={book.id} book={book} />);
   return (
     <table>
       <tr>
@@ -12,8 +15,7 @@ const BooksList = (props) => {
         <th>Title</th>
         <th>Category</th>
       </tr>
-      {books.forEach((book) => <Book id={book.id} title={book.title} category={book.category} />)}
-
+      {bookTable}
     </table>
   );
 };
@@ -26,6 +28,6 @@ const mapStateToProps = (state) => ({
   books: state.books,
 });
 
-const connected = connect(mapStateToProps, null)(BooksList);
+const BooksListConnected = connect(mapStateToProps, null)(BooksList);
 
-export default connected;
+export default BooksListConnected;
