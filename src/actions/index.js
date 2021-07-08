@@ -1,9 +1,7 @@
-const CREATE_BOOK = (book) => {
-  return {
+const CREATE_BOOK = (book) => ({
   type: 'CREATE_BOOK',
   book,
-  }
-};
+});
 
 const REMOVE_BOOK = (book) => ({
   type: 'REMOVE_BOOK',

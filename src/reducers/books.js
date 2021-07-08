@@ -1,14 +1,13 @@
-const BookReducer = (state = [], action) => {
-  console.log(state)
+const booksReducer = (state = [], action) => {
+  const id = state.length ? state[state.length - 1].id + 1 : null;
+
   switch (action.type) {
     case 'CREATE_BOOK':
-      return {
-        books: [...state.books, action.book]
-      };
+      return [...state, { ...action.book, id }];
     case 'REMOVE_BOOK':
-      return [...state.slice(0, index), ...state.slice(index)];
+      return state.filter((book) => book.id !== action.book.id);
     default:
       return state;
   }
 };
-export default BookReducer;
+export default booksReducer;

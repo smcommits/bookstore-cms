@@ -3,41 +3,36 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 import { CREATE_BOOK } from '../actions/index';
 
 const BooksForm = (props) => {
   const { addBook } = props;
+  const categories = ['Actions', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+  const categoryItems = categories.map((category) => <option key={uuidv4()} value={category}>{category}</option>);
 
   const [bookFormState, setBookFormState] = useState({
     title: '',
-    category: '',
+    category: 'Actions',
   });
 
   const handleChange = (event) => {
-    if (event.target.tagName === 'INPUT') {
-      setBookFormState({
-        ...bookFormState,
-        title: event.target.value,
-      });
-    } else {
-      setBookFormState({
-        ...bookFormState,
-        category: event.target.value,
-      });
-    }
+    setBookFormState({
+      ...bookFormState,
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const handleSubmit = (bookFormState) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     addBook(bookFormState);
   };
-  const categories = ['Actions', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-  const categoryItems = categories.map((category) => <option key={1} value={category.toLowerCase()}>{category}</option>);
 
   return (
     <form action="">
-      <input type="text" onChange={handleChange} />
-      <select id="categories" name="categories" onChange={handleChange}>
+      <input type="text" onChange={handleChange} name="title" />
+      <select id="categories" name="category" onChange={handleChange}>
         {categoryItems}
       </select>
       <button type="submit" onClick={handleSubmit}>Submit</button>
