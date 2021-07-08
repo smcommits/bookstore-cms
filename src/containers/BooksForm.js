@@ -3,13 +3,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import {CATEGORIES} from '../helpers/constants'
 import { CREATE_BOOK } from '../actions/index';
 
 const BooksForm = (props) => {
   const { addBook } = props;
-  const categories = ['Actions', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-  const categoryItems = categories.map((category) => <option key={category} value={category}>{category}</option>);
+   const categoryItems = CATEGORIES.map((category) => <option key={category} value={category}>{category}</option>);
 
   const [bookFormState, setBookFormState] = useState({
     title: '',
@@ -17,13 +16,10 @@ const BooksForm = (props) => {
   });
 
   const handleChange = ({target: {name, value}}) => {
-    console.log(name)
-    console.log(value)
     setBookFormState({
       ...bookFormState, 
       [name]: value
     })
-    console.log(bookFormState)
   };
 
   const handleSubmit = (event) => {

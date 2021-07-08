@@ -4,20 +4,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
-import { REMOVE_BOOK } from '../actions/index';
+import { REMOVE_BOOK, FILTER_BOOKS} from '../actions/index';
+import CategoryFilter from '../components/CategoryFilter'
 
 const BooksList = (props) => {
-  const { books, removeBook } = props;
+  const { books,filter,removeBook, filterBooks} = props;
 
   const handleRemoveBook = (book) => {
     removeBook(book);
   };
 
-  const bookTable = books.map((book) => (
-    <Book key={book.id} book={book} bookRemover={handleRemoveBook} />
-  ));
+  const handleFilterChange = (filter) => {
+    filterBooks(filter)
+  }
+
+  const renderBook = (id, book, handler)  => {
+    return (<Book key={id} book={book} bookRemover={handler} />)
+
+  }
+
+  const bookTable = books.map((book) => {
+    if(filter === "All") {
+      return renderBook(book.id, book, handleRemoveBook)
+    } else if(book.category === filter) {
+      return renderBook(book.id, book, handleRemoveBook)
+    }
+  });
 
   return (
+    <>
+    <CategoryFilter filterHandler={handleFilterChange}/>
     <table>
       <tr>
         <th>Book ID</th>
@@ -27,6 +43,7 @@ const BooksList = (props) => {
       </tr>
       {bookTable}
     </table>
+    </>
   );
 };
 
@@ -37,12 +54,16 @@ BooksList.propTypes = {
 
 const mapStateToProps = (state) => ({
   books: state.books,
+  filter: state.filter,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   removeBook: (book) => {
     dispatch(REMOVE_BOOK(book));
   },
+  filterBooks: (filter) => {
+    dispatch(FILTER_BOOKS(filter))
+  }
 });
 
 const BooksListConnected = connect(mapStateToProps, mapDispatchToProps)(BooksList);
