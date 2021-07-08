@@ -1,8 +1,10 @@
 const BookReducer = (state = [], action) => {
-  const index = state.indexOf(action.book);
+  console.log(state)
   switch (action.type) {
     case 'CREATE_BOOK':
-      return [...state, action.book];
+      return {
+        books: [...state.books, action.book]
+      };
     case 'REMOVE_BOOK':
       return [...state.slice(0, index), ...state.slice(index)];
     default:

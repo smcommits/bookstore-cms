@@ -31,8 +31,8 @@ const initialState = {
   ],
 };
 
-const store = createStore(rootReducer, initialState);
-
+const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+console.log(store.getState())
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
