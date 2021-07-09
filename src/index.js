@@ -30,7 +30,7 @@ const initialState = {
       category: 'Horror',
     },
   ],
-  filter: 'All'
+  filter: 'All',
 };
 
 const store = createStore(rootReducer, initialState);

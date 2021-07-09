@@ -9,9 +9,9 @@ const REMOVE_BOOK = (book) => ({
 });
 
 const FILTER_BOOKS = (filter) => ({
-  type: "FILTER_BOOKS",
-  filter, 
-})
+  type: 'FILTER_BOOKS',
+  filter,
+});
 
 export {
   CREATE_BOOK,

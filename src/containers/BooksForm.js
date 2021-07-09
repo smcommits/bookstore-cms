@@ -3,23 +3,23 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {CATEGORIES} from '../helpers/constants'
+import { CATEGORIES } from '../helpers/constants';
 import { CREATE_BOOK } from '../actions/index';
 
 const BooksForm = (props) => {
   const { addBook } = props;
-   const categoryItems = CATEGORIES.map((category) => <option key={category} value={category}>{category}</option>);
+  const categoryItems = CATEGORIES.map((category) => <option key={category} value={category}>{category}</option>);
 
   const [bookFormState, setBookFormState] = useState({
     title: '',
     category: 'Actions',
   });
 
-  const handleChange = ({target: {name, value}}) => {
+  const handleChange = ({ target: { name, value } }) => {
     setBookFormState({
-      ...bookFormState, 
-      [name]: value
-    })
+      ...bookFormState,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (event) => {
