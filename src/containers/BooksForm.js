@@ -3,24 +3,22 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
-
+import { CATEGORIES } from '../helpers/constants';
 import { CREATE_BOOK } from '../actions/index';
 
 const BooksForm = (props) => {
   const { addBook } = props;
-  const categories = ['Actions', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-  const categoryItems = categories.map((category) => <option key={uuidv4()} value={category}>{category}</option>);
+  const categoryItems = CATEGORIES.map((category) => <option key={category} value={category}>{category}</option>);
 
   const [bookFormState, setBookFormState] = useState({
     title: '',
     category: 'Actions',
   });
 
-  const handleChange = (event) => {
+  const handleChange = ({ target: { name, value } }) => {
     setBookFormState({
       ...bookFormState,
-      [event.target.name]: event.target.value,
+      [name]: value,
     });
   };
 
