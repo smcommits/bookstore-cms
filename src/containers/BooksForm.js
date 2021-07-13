@@ -12,6 +12,7 @@ const BooksForm = (props) => {
 
   const [bookFormState, setBookFormState] = useState({
     title: '',
+    author: '',
     category: 'Actions',
   });
 
@@ -28,13 +29,17 @@ const BooksForm = (props) => {
   };
 
   return (
-    <form action="">
-      <input type="text" onChange={handleChange} name="title" />
+    <div className="book_form_container">
+    <h2 className="form_head">Add a new book</h2>
+    <form action="" className="book_add_form flex space_between">
+      <input className="title_input" type="text" onChange={handleChange} name="title" placeholder="Book Title" />
+      <input className="author_input"type="author" onChange={handleChange} name="author" placeholder="Author" />
       <select id="categories" name="category" onChange={handleChange}>
         {categoryItems}
       </select>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
+      <button type="submit" onClick={handleSubmit}>Add Book</button>
     </form>
+    </div>
   );
 };
 
