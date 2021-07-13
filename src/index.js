@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './reducers/index';
+import './styles/css/index.css';
 
 import App from './components/App';
 
@@ -11,29 +12,27 @@ const initialState = {
   books: [
     {
       id: 1,
-      title: 'Book1',
-      category: 'Action',
+      title: 'Intro to CS',
+      author: 'John M Zelle',
+      category: 'Learning',
     },
     {
       id: 2,
-      title: 'Book2',
-      category: 'History',
+      title: 'The Murder of Roger Ackroyd',
+      author: 'Agatha Christie',
+      category: 'Mystrey',
     },
     {
       id: 3,
-      title: 'Book3',
-      category: 'Biography',
-    },
-    {
-      id: 4,
-      title: 'Book4',
-      category: 'Horror',
+      title: 'The Elements of Computing System',
+      author: 'Noam Nisan',
+      category: 'Learning',
     },
   ],
   filter: 'All',
 };
 
-const store = createStore(rootReducer, initialState);
+const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
