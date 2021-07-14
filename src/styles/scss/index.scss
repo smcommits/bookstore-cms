@@ -64,6 +64,16 @@ nav {
   padding: 1.688rem 0;
   max-width: 75rem;
   flex-wrap: wrap;
+
+  .left {
+    flex-wrap: wrap;
+  }
+
+  .profile_image {
+    border-radius: 50px;
+    padding: 0.875rem;
+    border: solid 1px #e8e8e8;
+  }
 }
 
 .text_logo {
@@ -138,6 +148,7 @@ main {
   font-size: 0.875rem;
   font-weight: 400;
   color: $small-text;
+  cursor: pointer;
 }
 
 .book_control_list {

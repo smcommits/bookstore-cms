@@ -47,6 +47,16 @@ nav {
   flex-wrap: wrap;
 }
 
+nav .left {
+  flex-wrap: wrap;
+}
+
+nav .profile_image {
+  border-radius: 50px;
+  padding: 0.875rem;
+  border: solid 1px #e8e8e8;
+}
+
 .text_logo {
   font-family: Montserrat, sans-serif;
   font-size: 1.875rem;
@@ -118,6 +128,7 @@ main {
   font-size: 0.875rem;
   font-weight: 400;
   color: #4386bf;
+  cursor: pointer;
 }
 
 .book_control_list button {
