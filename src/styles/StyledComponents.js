@@ -5,9 +5,4 @@ const HorizontalList = styled.ul`
   list-style: none;
 `;
 
-const FlexRow = styled.div`
-  display: flex;
-`;
-export {
-  HorizontalList,
-};
+export default HorizontalList;

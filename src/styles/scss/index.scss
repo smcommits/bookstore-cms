@@ -141,6 +141,11 @@ main {
 }
 
 .book_control_list {
+  button {
+    background: none;
+    border: none;
+  }
+
   li:nth-child(2) {
     @include border-x(0.125rem, solid, #e8e8e8);
 

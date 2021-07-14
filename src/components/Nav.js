@@ -1,5 +1,5 @@
 import React from 'react';
-import { HorizontalList } from '../styles/StyledComponents';
+import HorizontalList from '../styles/StyledComponents';
 
 const Nav = () => (
   <header>

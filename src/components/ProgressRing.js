@@ -3,7 +3,7 @@ import React from 'react';
 const ProgressRing = () => {
   const percentage = Math.floor(Math.random() * 100);
 
-  const percentageCSS = { 'stroke-dashoffset': `calc(200px - (200px * ${percentage} ) / 100)` };
+  const percentageCSS = { strokeDashoffset: `calc(200px - (200px * ${percentage} ) / 100)` };
 
   return (
     <div className="percent flex_row_center">

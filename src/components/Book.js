@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProgressRing from './ProgressRing';
-import { HorizontalList } from '../styles/StyledComponents';
+import HorizontalList from '../styles/StyledComponents';
 
 const Book = (props) => {
   const { book, bookRemover } = props;
@@ -12,7 +12,7 @@ const Book = (props) => {
   };
 
   const {
-    id, title, author, category,
+    title, author, category,
   } = book;
   return (
     <li className="book_list_item flex space_between">
@@ -24,9 +24,15 @@ const Book = (props) => {
         </div>
         <div className="book_control_container">
           <HorizontalList className="book_control_list">
-            <li className="book_control_item small_text">Comment</li>
-            <li className="book_control_item small_text">Edit</li>
-            <li className="book_control_item small_text">Remove</li>
+            <li className="book_control_item">
+              <button type="button" className="small_text">Comment</button>
+            </li>
+            <li className="book_control_item">
+              <button type="button" className="small_text">Edit</button>
+            </li>
+            <li className="book_control_item">
+              <button type="button" className="small_text" onClick={removeBook} onKeyDown={removeBook}>Remove</button>
+            </li>
           </HorizontalList>
         </div>
       </div>
@@ -36,7 +42,7 @@ const Book = (props) => {
         <div className="book_chapter">
           <small>Current Chapter</small>
           <p className="chapter-name">Chapter 17</p>
-          <button className="update_progress" type='submit'>Update Progress</button>
+          <button className="update_progress" type="submit">Update Progress</button>
         </div>
       </div>
     </li>
@@ -45,7 +51,6 @@ const Book = (props) => {
 
 Book.propTypes = {
   book: PropTypes.instanceOf(Object).isRequired,
-  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   bookRemover: PropTypes.func.isRequired,
