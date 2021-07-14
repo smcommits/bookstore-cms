@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import thunkMiddleware from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+
 import rootReducer from './reducers/index';
+import { fetchBooks } from './reducers/books';
 import './styles/css/index.css';
 
 import App from './components/App';
@@ -32,7 +35,11 @@ const initialState = {
   filter: 'All',
 };
 
-const store = createStore(rootReducer, initialState);
+const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
+
+const store = createStore(rootReducer, composedEnhancer);
+store.dispatch(fetchBooks);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

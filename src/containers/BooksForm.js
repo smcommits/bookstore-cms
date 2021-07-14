@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CATEGORIES } from '../helpers/constants';
-import { CREATE_BOOK } from '../actions/index';
+import { postBook } from '../reducers/books';
 
 const BooksForm = (props) => {
   const { addBook } = props;
@@ -49,7 +49,7 @@ BooksForm.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   addBook: (book) => {
-    dispatch(CREATE_BOOK(book));
+    dispatch(postBook(book));
   },
 });
 
