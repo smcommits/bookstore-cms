@@ -26,15 +26,11 @@ const BooksList = (props) => {
   return (
     <>
       <CategoryFilter filterHandler={handleFilterChange} />
-      <table>
-        <tr>
-          <th>Book ID</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Remove</th>
-        </tr>
-        {bookTable}
-      </table>
+      <section className="book_list">
+        <ul className="list_style_none">
+          {bookTable}
+        </ul>
+      </section>
     </>
   );
 };
