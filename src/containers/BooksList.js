@@ -2,25 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
-import { REMOVE_BOOK, FILTER_BOOKS } from '../actions/index';
+import { FILTER_BOOKS } from '../actions/index';
+import { removeBook, updatePercent } from '../reducers/books';
 import CategoryFilter from '../components/CategoryFilter';
+import sortBooksById from '../helpers/helpers';
 
 const BooksList = (props) => {
   const {
-    books, filter, removeBook, filterBooks,
+    books, filter, deleteBook, updateBook, filterBooks,
   } = props;
 
+  const sortedBooks = books.sort(sortBooksById);
+
   const handleRemoveBook = (book) => {
-    removeBook(book);
+    deleteBook(book);
   };
 
   const handleFilterChange = (filter) => {
     filterBooks(filter);
   };
 
-  const renderBook = (id, book, handler) => (<Book key={id} book={book} bookRemover={handler} />);
+  const handlePercentChange = (book, newPercent) => {
+    updateBook(book, newPercent);
+  };
 
-  const bookTable = books.filter((book) => book.category === filter || filter === 'All')
+  const renderBook = (id, book, handler) => (
+    <Book key={id} book={book} bookRemover={handler} percentUpdate={handlePercentChange} />
+  );
+
+  const bookTable = sortedBooks.filter((book) => book.category === filter || filter === 'All')
     .map((book) => renderBook(book.id, book, handleRemoveBook));
 
   return (
@@ -38,8 +48,9 @@ const BooksList = (props) => {
 BooksList.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
   filter: PropTypes.string.isRequired,
-  removeBook: PropTypes.func.isRequired,
+  deleteBook: PropTypes.func.isRequired,
   filterBooks: PropTypes.func.isRequired,
+  updateBook: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -48,8 +59,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  removeBook: (book) => {
-    dispatch(REMOVE_BOOK(book));
+  deleteBook: (book) => {
+    dispatch(removeBook(book));
+  },
+
+  updateBook: (book, newPercent) => {
+    dispatch(updatePercent(book, newPercent));
   },
   filterBooks: (filter) => {
     dispatch(FILTER_BOOKS(filter));

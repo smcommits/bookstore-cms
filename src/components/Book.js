@@ -5,10 +5,18 @@ import ProgressRing from './ProgressRing';
 import HorizontalList from '../styles/StyledComponents';
 
 const Book = (props) => {
-  const { book, bookRemover } = props;
+  const { book, bookRemover, percentUpdate } = props;
 
   const removeBook = () => {
     bookRemover(book);
+  };
+
+  const percentHandler = (event) => {
+    const percentage = event.target.value;
+    if (!(percentage.match(/^[0-9][0-9]?$|^100$/))) {
+      return;
+    }
+    percentUpdate(book, event.target.value);
   };
 
   const {
@@ -38,7 +46,10 @@ const Book = (props) => {
       </div>
 
       <div className="right  flex">
-        <ProgressRing />
+        <div className="percent_wrapper flex_row_center">
+          <ProgressRing percentage={book.percentage} />
+          <input type="text" placeholder="%" onChange={percentHandler} maxLength="3" />
+        </div>
         <div className="book_chapter">
           <small>Current Chapter</small>
           <p className="chapter-name">Chapter 17</p>
@@ -54,5 +65,6 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   bookRemover: PropTypes.func.isRequired,
+  percentUpdate: PropTypes.func.isRequired,
 };
 export default Book;

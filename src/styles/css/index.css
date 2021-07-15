@@ -101,6 +101,7 @@ main {
 
 .book_list_item .left {
   min-height: 100%;
+  flex-basis: 33.33%;
 }
 
 .book_list_item .right {
@@ -143,9 +144,20 @@ main {
   margin: 0 0.938rem;
 }
 
-.percent {
+.percent_wrapper {
   padding-right: 5rem;
   border-right: solid 0.125rem #e8e8e8;
+}
+
+.percent_wrapper input {
+  width: 100%;
+  max-width: 50px;
+  padding: 0.813rem 0.5rem;
+  border: solid 1px #e8e8e8;
+}
+
+.percent {
+  margin-right: 2.5rem;
 }
 
 .percent svg {
@@ -161,8 +173,8 @@ main {
   stroke-width: 5;
   stroke: #000;
   transform: translate(5px, 5px);
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
+  stroke-dasharray: 199;
+  stroke-dashoffset: 199;
 }
 
 .percent svg circle:nth-child(1) {

@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ProgressRing = () => {
-  const percentage = Math.floor(Math.random() * 100);
+const ProgressRing = (props) => {
+  const { percentage } = props;
 
-  const percentageCSS = { strokeDashoffset: `calc(200px - (200px * ${percentage} ) / 100)` };
+  const percentageCSS = { strokeDashoffset: `calc(199px - (199px * ${percentage} ) / 100)` };
 
   return (
     <div className="percent flex_row_center">
@@ -25,6 +26,10 @@ const ProgressRing = () => {
       </div>
     </div>
   );
+};
+
+ProgressRing.propTypes = {
+  percentage: PropTypes.string.isRequired,
 };
 
 export default ProgressRing;
