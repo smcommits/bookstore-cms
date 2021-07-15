@@ -2,7 +2,7 @@
 
       
 <p align="center">
-  <a href="https://greatbookstore.herokuapp.com/">Live Demo</a> •
+  <a href="https://greatbookstore.herokuapp.com/" targer="_blank">Live Demo</a> •
   <a href="#getting-started">Getting Started</a> •
   <a href="#stack">Stack</a> •
   <a href="#contributing">Contributing</a> •
