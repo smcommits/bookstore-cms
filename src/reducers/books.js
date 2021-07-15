@@ -18,13 +18,13 @@ const booksReducer = (state = [], action) => {
 };
 
 const fetchBooks = async (dispatch, getState) => {
-  const response = await axios.get('http://localhost:3000/api/books');
+  const response = await axios.get('https://bookstoreback.herokuapp.com/api/books');
   dispatch({ type: 'FETCH_BOOKS', payload: response.data });
 };
 
 const postBook = (book) => {
   const saveBookThunk = async (dispatch, getState) => {
-    const response = await axios.post('http://localhost:3000/api/books', { data: book });
+    const response = await axios.post('https://bookstoreback.herokuapp.com/api/books', { data: book });
     dispatch({ type: 'CREATE_BOOK', payload: response.data.data });
   };
 
@@ -33,7 +33,7 @@ const postBook = (book) => {
 
 const removeBook = (book) => {
   const removeBookThunk = async (dispatch, getState) => {
-    const response = await axios.delete(`http://localhost:3000/api/books/${book.id}`);
+    const response = await axios.delete(`https://bookstoreback.herokuapp.com/api/books${book.id}`);
     dispatch({ type: 'REMOVE_BOOK', payload: response.data.data });
   };
   return removeBookThunk;
@@ -41,7 +41,7 @@ const removeBook = (book) => {
 
 const updatePercent = (book, newPercent) => {
   const updatePercentThunk = async (dispatch, getState) => {
-    const response = await axios.patch(`http://localhost:3000/api/books/${book.id}`, { data: newPercent });
+    const response = await axios.patch(`https://bookstoreback.herokuapp.com/api/books${book.id}`, { data: newPercent });
     dispatch({ type: 'UPDATE_PERCENT', payload: response.data.data });
   };
 
