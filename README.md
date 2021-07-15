@@ -1,5 +1,14 @@
 # Bookstore CMS
 
+      
+<p align="center">
+  <a href="https://greatbookstore.herokuapp.com/">Live Demo</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#stack">Stack</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#authors">Authors</a> 
+</p>
+
 This project is a bookstore CMS. 
 
 ![image](https://user-images.githubusercontent.com/59168430/125865905-5006fb96-2877-473b-a855-6acc7e922cf4.png)
