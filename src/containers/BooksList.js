@@ -5,14 +5,14 @@ import Book from '../components/Book';
 import { FILTER_BOOKS } from '../actions/index';
 import { removeBook, updatePercent } from '../reducers/books';
 import CategoryFilter from '../components/CategoryFilter';
-import sortBooksById from '../helpers/helpers'
+import sortBooksById from '../helpers/helpers';
 
 const BooksList = (props) => {
   const {
     books, filter, deleteBook, updateBook, filterBooks,
   } = props;
 
-  const sortedBooks = books.sort(sortBooksById)
+  const sortedBooks = books.sort(sortBooksById);
 
   const handleRemoveBook = (book) => {
     deleteBook(book);
@@ -26,7 +26,9 @@ const BooksList = (props) => {
     updateBook(book, newPercent);
   };
 
-  const renderBook = (id, book, handler) => (<Book key={id} book={book} bookRemover={handler} percentUpdate={handlePercentChange} />);
+  const renderBook = (id, book, handler) => (
+    <Book key={id} book={book} bookRemover={handler} percentUpdate={handlePercentChange} />
+  );
 
   const bookTable = sortedBooks.filter((book) => book.category === filter || filter === 'All')
     .map((book) => renderBook(book.id, book, handleRemoveBook));
@@ -48,6 +50,7 @@ BooksList.propTypes = {
   filter: PropTypes.string.isRequired,
   deleteBook: PropTypes.func.isRequired,
   filterBooks: PropTypes.func.isRequired,
+  updateBook: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

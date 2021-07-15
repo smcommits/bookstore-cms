@@ -120,6 +120,7 @@ main {
 
   .left {
     min-height: 100%;
+    flex-basis: 33.33%;
   }
 
   .right {
@@ -172,13 +173,14 @@ main {
   input {
     width: 100%;
     max-width: 50px;
-    padding: 0.813rem .5rem;
+    padding: 0.813rem 0.5rem;
     border: solid 1px #e8e8e8;
   }
 }
 
 .percent {
   margin-right: 2.5rem;
+
   svg {
     width: 4.25rem;
     height: 4.25rem;

@@ -48,7 +48,7 @@ const Book = (props) => {
       <div className="right  flex">
         <div className="percent_wrapper flex_row_center">
           <ProgressRing percentage={book.percentage} />
-          <input type="text" placeholder="%" onChange={percentHandler} maxLength="3"/>
+          <input type="text" placeholder="%" onChange={percentHandler} maxLength="3" />
         </div>
         <div className="book_chapter">
           <small>Current Chapter</small>
@@ -65,5 +65,6 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   bookRemover: PropTypes.func.isRequired,
+  percentUpdate: PropTypes.func.isRequired,
 };
 export default Book;

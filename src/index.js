@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
@@ -11,31 +10,7 @@ import './styles/css/index.css';
 
 import App from './components/App';
 
-const initialState = {
-  books: [
-    {
-      id: 1,
-      title: 'Intro to CS',
-      author: 'John M Zelle',
-      category: 'Learning',
-    },
-    {
-      id: 2,
-      title: 'The Murder of Roger Ackroyd',
-      author: 'Agatha Christie',
-      category: 'Mystrey',
-    },
-    {
-      id: 3,
-      title: 'The Elements of Computing System',
-      author: 'Noam Nisan',
-      category: 'Learning',
-    },
-  ],
-  filter: 'All',
-};
-
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
+const composedEnhancer = applyMiddleware(thunkMiddleware);
 
 const store = createStore(rootReducer, composedEnhancer);
 store.dispatch(fetchBooks);

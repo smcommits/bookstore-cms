@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ProgressRing = (props) => {
   const { percentage } = props;
@@ -25,6 +26,10 @@ const ProgressRing = (props) => {
       </div>
     </div>
   );
+};
+
+ProgressRing.propTypes = {
+  percentage: PropTypes.string.isRequired,
 };
 
 export default ProgressRing;
