@@ -43,7 +43,7 @@ npm run start
 
 This project is a full-stack solution built with various front end and back end technologies. They are listed below. 
 
-- Node.js
+- Rails
 - React
 - React-DOM
 - React-Create-App
