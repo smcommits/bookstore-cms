@@ -9,4 +9,9 @@ const sortBooksById = (a, b) => {
   return 0;
 };
 
-export default sortBooksById;
+const toggleLoader = () => {
+  const loader = document.querySelector('.loaderWrapper');
+  loader.classList.toggle('show');
+};
+
+export { sortBooksById, toggleLoader };

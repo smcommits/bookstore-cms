@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import axios from 'axios';
+import { toggleLoader } from '../helpers/helpers';
 
 const booksReducer = (state = [], action) => {
   switch (action.type) {
@@ -18,7 +19,9 @@ const booksReducer = (state = [], action) => {
 };
 
 const fetchBooks = async (dispatch, getState) => {
+  toggleLoader();
   const response = await axios.get('https://bookstoreback.herokuapp.com/api/books');
+  toggleLoader();
   dispatch({ type: 'FETCH_BOOKS', payload: response.data });
 };
 

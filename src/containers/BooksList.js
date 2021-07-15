@@ -5,7 +5,7 @@ import Book from '../components/Book';
 import { FILTER_BOOKS } from '../actions/index';
 import { removeBook, updatePercent } from '../reducers/books';
 import CategoryFilter from '../components/CategoryFilter';
-import sortBooksById from '../helpers/helpers';
+import { sortBooksById } from '../helpers/helpers';
 
 const BooksList = (props) => {
   const {

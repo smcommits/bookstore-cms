@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import rootReducer from './reducers/index';
+import Loader from './components/Loader';
 import { fetchBooks } from './reducers/books';
 import './styles/css/index.css';
 
@@ -13,16 +14,18 @@ import App from './components/App';
 const composedEnhancer = applyMiddleware(thunkMiddleware);
 
 const store = createStore(rootReducer, composedEnhancer);
-store.dispatch(fetchBooks);
 
 ReactDOM.render(
   <React.StrictMode>
+    <Loader />
     <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+store.dispatch(fetchBooks);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
